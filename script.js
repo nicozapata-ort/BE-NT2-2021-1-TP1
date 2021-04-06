@@ -51,10 +51,13 @@ const classNames = {
 
   function addTodo() {
     let tarea = prompt("Que tarea deseas agregar?");
-    const elementoLista = document.createElement("li")
-    const elementoInput = document.createElement("input")
 
-    completarLista(elementoLista, tarea);
-    completarInputs(elementoLista, elementoInput);
-    completarContadores();
+    if(tarea !== null && tarea !== ""){
+      const elementoLista = document.createElement("li")
+      const elementoInput = document.createElement("input")
+  
+      completarLista(elementoLista, tarea);
+      completarInputs(elementoLista, elementoInput);
+      completarContadores();
+    }
   }
