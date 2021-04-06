@@ -10,7 +10,6 @@ const classNames = {
   const uncheckedCountSpan = document.getElementById('unchecked-count')
   const contadorItems = new Contador(0);
   const contadorChecks = new Contador(0);
-  // let contadorInputs = 0;
 
   function Contador(numero){
     this.contador = numero;
@@ -32,9 +31,6 @@ const classNames = {
   }
 
   function completarInputs(elementoLista, elementoInput){
-    // contadorInputs++;
-    
-    // elementoInput.setAttribute("id", `input-value ${contadorInputs}`)
     elementoInput.setAttribute("type", "checkbox")
     elementoInput.addEventListener('click', () => {
       if(elementoInput.checked){
