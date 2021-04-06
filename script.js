@@ -10,13 +10,18 @@ const classNames = {
   const uncheckedCountSpan = document.getElementById('unchecked-count')
   const contadorItems = new Contador(0);
   const contadorChecks = new Contador(0);
-  let contadorInputs = 0;
+  // let contadorInputs = 0;
 
   function Contador(numero){
     this.contador = numero;
     
     this.incrementar = function(){this.contador++;}
     this.decrementar = function(){this.contador--;}
+  }
+
+  function completarLista(elementoLista, tarea){
+    elementoLista.textContent = tarea;
+    list.appendChild(elementoLista)
   }
 
   function completarContadores(){
@@ -26,10 +31,12 @@ const classNames = {
     uncheckedCountSpan.textContent = contadorChecks.contador;
   }
 
-  function completarInputs(elementoInput, contadorInputs){
+  function completarInputs(elementoLista, elementoInput){
+    // contadorInputs++;
+    
+    // elementoInput.setAttribute("id", `input-value ${contadorInputs}`)
     elementoInput.setAttribute("type", "checkbox")
-    elementoInput.setAttribute("id", `input-value ${contadorInputs}`)
-    elementoInput.addEventListener('click', function(){
+    elementoInput.addEventListener('click', () => {
       if(elementoInput.checked){
         contadorChecks.decrementar()
         uncheckedCountSpan.textContent = contadorChecks.contador;
@@ -38,24 +45,16 @@ const classNames = {
         uncheckedCountSpan.textContent = contadorChecks.contador;
       }
     })
-  }
-
-  function completarLista(tarea){
-    contadorInputs++;
-    const elementoLista = document.createElement("li")
-    const elementoInput = document.createElement("input")
-
-    elementoLista.textContent = tarea;
-    list.appendChild(elementoLista)
-
-    completarInputs(elementoInput,contadorInputs);
 
     elementoLista.prepend(elementoInput)
   }
 
   function addTodo() {
     let tarea = prompt("Que tarea deseas agregar?");
+    const elementoLista = document.createElement("li")
+    const elementoInput = document.createElement("input")
 
-    completarLista(tarea);
+    completarLista(elementoLista, tarea);
+    completarInputs(elementoLista, elementoInput);
     completarContadores();
   }
